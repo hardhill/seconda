@@ -33,11 +33,42 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   late String _title;
   MyHomePage({String? title}) {
     _title = title!;
   }
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   print('INIT STATE');
+  // }
+  //
+  // @override
+  // void didChangeAppLifecycleState(AppLifecycleState state) {
+  //   super.didChangeAppLifecycleState(state);
+  //   switch (state) {
+  //     case AppLifecycleState.inactive:
+  //       print('appLifeCycleState inactive');
+  //       break;
+  //     case AppLifecycleState.resumed:
+  //       print('appLifeCycleState resumed');
+  //       break;
+  //     case AppLifecycleState.paused:
+  //       print('appLifeCycleState paused');
+  //       break;
+  //     case AppLifecycleState.detached:
+  //       print('appLifeCycleState detached');
+  //       break;
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<MyData>(
@@ -45,7 +76,7 @@ class MyHomePage extends StatelessWidget {
       builder: (context, _) {
         return Scaffold(
           appBar: AppBar(
-            title: Text(_title),
+            title: Text(widget._title),
           ),
           body: Center(
             child: Column(
